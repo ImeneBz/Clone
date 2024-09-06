@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="menu">
+        <div class="links">
+            <a class="menuElement" href="https://about.google/?fg=1&utm_source=google-FR&utm_medium=referral&utm_campaign=hp-header">A propos</a>
+            <a class="menuElement" href="https://about.google/?fg=1&utm_source=google-FR&utm_medium=referral&utm_campaign=hp-header">Google Store</a>
+        </div> 
+        <div class="dropdowns">
+            <a class="menuElement" href="https://mail.google.com/mail/u/0/">Gmail</a>
+            <a class="menuElement" href="https://www.google.com/imghp?hl=fr&authuser=0&ogbl">Images</a>
+            <select class="menuElement" name="" id="googleOptions"> 
+                <option value="" selected hidden></option>
+                <option value="Gmail">Gmail</option>
+                <option value="Drive">Drive</option>
+                <option value="Agenda">Agenda</option>
+                <option value="Recherche">Recherche</option>
+                <option value="youtube">youtube</option>
+                <option value="Play">play</option>
+                <option value="Traduction">traduction</option>
+            </select>
+            <div class="menuElement" id="GoogleAccount">
+                <p class="GoogleAccount">A</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="main">
+        <img class="logo" src="./assets/logo-google.png" alt="logo imOogle">
+        <!-- <p class="wish"></p> -->
+        <div class="barreRecherche">
+            <div class="logoInputloop">🔍</div>
+            <input type="text" name="InputRecherche" id="InputRecherche"  autocomplete="off">
+            <div class="logoSearch">
+                <div class="logoInput photo">📷</div>
+                <div class="logoInput micro">🎙️</div>
+            </div>
+        </div>
+        <div class="boutonRecherche">
+            <button id="rechercheGoogle">Recherche Google</button>
+            <button id="chance">J'ai de la chance</button>
+        </div>
+
+
+    </div>
+    <footer>
+        <div class="country">
+            <p>France</p>
+        </div>
+        <div class="legal">
+            <ul class="legalPartOne">
+                <li><a href="https://ads.google.com/intl/fr_fr/home/?subid=ww-ww-et-g-awa-a-g_hpafoot1_1!o2&utm_source=google.com&utm_medium=referral&utm_campaign=google_hpafooter&fg=1">publicité</a></li>
+                <li><a href="https://smallbusiness.withgoogle.com/intl/fr_fr/?subid=fr-fr-et-g-awa-a-g_hpbfoot1_1!o2&utm_source=google&utm_medium=ep&utm_campaign=google_hpbfooter&utm_content=google_hpbfooter&gmbsrc=fr-fr-et-gs-z-gmb-s-z-u~sb-g4sb_srvcs-u">entreprise</a></li>
+                <li><a href="https://www.google.com/search/howsearchworks/?fg=1">comment fonctionne la recherche google ?</a></li>
+            </ul>
+            <div class="climat"> <a href="https://sustainability.google/intl/fr_fr/?utm_source=googlehpfooter&utm_medium=housepromos&utm_campaign=bottom-footer&utm_content=">🫛 Notre troisième décennie d'action pour le climat</a></div>
+            <ul class="legalPartTwo">
+                <li><a href="https://support.google.com/legal/answer/3110420?hl=fr&fg=1">signaler un contenu inapproprié</a></li>
+                <li><a href="https://support.google.com/websearch/answer/7585859?hl=fr&fg=1&visit_id=638606479322998141-2360649972&p=fr_consumer_info&rd=1">info consommateurs</a></li>
+                <li><a href="https://policies.google.com/privacy?hl=fr&fg=1">confidentialité</a></li>
+                <li><a href="https://policies.google.com/terms?hl=fr&fg=1">conditions</a></li>
+                <li>paramètres</li>
+            </ul>
+        </div>
+    </footer>
+    
+<script>
+    document.getElementById("rechercheGoogle").addEventListener("click", ()=> {
+        let Input = document.getElementById("InputRecherche").value ; 
+        let Search = Input.replaceAll(' ','+');
+        let url = "https://www.google.com/search?q="+Search; 
+        window.location.href = url   
+    })
+    const titles = [
+    "Je veux rire",
+    "Je veux jouer", 
+    "Je veux de l'aventure",
+    "Je veux des etoiles",
+    "J'ai faim",
+    ];
+
+    const values = [
+        "https://www.google.com/search?q=com%C3%A9dies",
+        "https://www.google.com/search?q=snake",
+        "https://www.google.com/search?q=s%C3%A9lecteur+de+couleur",
+        "https://www.google.com/search?q=n%C3%A9buleuse+de+r%C3%A9flexion",
+        "https://www.google.com/search?q=recettes+pour+le+d%C3%AEner"
+    ]
+
+    document.getElementById("chance"). addEventListener("mouseover", ()=>{
+        let randomNumber; 
+        const timeInterval = setInterval(() => {
+        randomNumber = Math.floor(Math.random() * titles.length);
+        
+        document.getElementById("chance").innerText = titles[randomNumber];
+        }, 100);
+        setTimeout(()=>{
+            clearInterval(timeInterval);
+            document.getElementById("chance"). addEventListener("click", ()=>{
+                window.location.href = values[randomNumber]; 
+            })
+            },1000) 
+    });
+
+    document.getElementById("chance").addEventListener("mouseout", ()=>{
+       setTimeout(()=>{document.getElementById("chance").innerText = "j'ai de la chance"},500) 
+    })
+
+
+</script>
+</body>
+</html>
